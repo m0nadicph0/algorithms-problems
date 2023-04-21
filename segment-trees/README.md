@@ -1,4 +1,5 @@
 
+# Segment Trees
 
 Segment trees are a data structure used for efficiently performing range queries on an array or a list. They are particularly useful when the array is subject to updates, and the range queries need to be performed frequently.
 
