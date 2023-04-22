@@ -77,7 +77,7 @@ Input array:
 ```
 
 
-```
+```mermaid
 graph TD
   A["[0,3] 10"]
   B["[0,1] 4"]
@@ -110,7 +110,7 @@ Input array:
 ```
 
 
-```
+```mermaid
 graph TD
   A["[0,6] 43"]
   B["[0,3] 24"]
