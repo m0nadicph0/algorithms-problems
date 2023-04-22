@@ -1,214 +1,156 @@
 
 # Segment Trees
 
-Segment trees are a data structure used for efficiently performing range queries on an array or a list. They are particularly useful when the array is subject to updates, and the range queries need to be performed frequently.
+Range queries are a type of query that involves finding an aggregate value 
+(such as minimum, maximum, sum, or average) over a contiguous subsequence 
+or range of elements in an array or data structure.
 
-The idea behind a segment tree is to divide the array into smaller segments and represent each segment using a node in a binary tree. The root of the tree represents the entire array, and each level of the tree represents a smaller segment of the array. Each node in the tree represents a segment, and it stores information about that segment that can be used to answer range queries.
-
-For example, consider the following array of integers:
-
-[1, 3, 5, 7, 9, 11, 13, 15]
-
-A segment tree for this array would look like this:
+For example, consider an array of integers:
 
 ```
-              [1-8]
-             /     \
-          [1-4]    [5-8]
-         /    \    /   \
-      [1-2] [3-4] [5-6] [7-8]
-     /    \   /   \   /    \
-    [1]  [2] [3] [4] [5]  [6-8]
-                       /    \
-                      [7]  [8]
-```
+ 0  1  2  3  4  5  6  7
+[4, 6, 1, 8, 3, 9, 7, 5]
+``` 
+Here are some examples of range queries that can be performed on this array:
 
-In this tree, each node represents a segment of the original array. For example, the node labeled [3-4] represents the segment [5, 7], and the node labeled [5-8] represents the segment [9, 11, 13, 15]. Each node stores some information that can be used to answer range queries over its corresponding segment.
+1. **Finding the minimum value between index 2 and index 5**: The subsequence [1, 8, 3, 9] lies between index 2 and index 5. The minimum value in this subsequence is 1.
+2. **Finding the sum of all values between index 1 and index 6**: The subsequence [6, 1, 8, 3, 9, 7] lies between index 1 and index 6. The sum of all values in this subsequence is 34.
+3. **Finding the maximum value in the entire array**: The maximum value in the array is 9.
 
-For example, let's say we want to find the sum of the values in the segment [2, 6]. We can start at the root node, which represents the entire array, and recursively traverse down the tree, visiting only the nodes that overlap with our query range. At each node, we use the stored information to compute the answer to our query.
+Range queries are commonly used in a variety of applications, such as 
+* data analysis
+* image processing
+* computational geometry. 
 
-In this case, we would visit the nodes labeled [1-4], [3-4], and [5-6]. We can compute the sum of the segment represented by each of these nodes as follows:
+* By using data structures such as `segment trees` or _binary indexed trees_, range queries can be performed 
+* efficiently in logarithmic time, allowing for the processing of large data sets in real-time.
 
-```
-[1-4] = 1 + 3 + 5 + 7 = 16
-[3-4] = 5 + 7 = 12
-[5-6] = 11 + 13 = 24
-```
+## Segment Trees
 
-Then, we can add up these values to get the sum of the segment [2, 6]:
+Segment Trees, also known as interval trees, are a type of data structure used for 
+efficient querying and updating of intervals or segments in an array. 
+They are particularly useful for solving problems that involve range queries, such as finding the minimum, maximum, or sum of all elements in a given range.
 
-```
-sum([2, 6]) = 16 + 12 + 24 = 52
-```
+A segment tree works by recursively partitioning the array into smaller sub-arrays and storing the values that correspond to each subarray in a tree data structure. 
+Each node of the tree represents a segment or interval of the original array, and the values stored at each node are determined by aggregating the values of its children.
 
-This is just one example of how segment trees can be used to perform range queries efficiently. Other common range queries include finding the minimum or maximum value in a range, or counting the number of elements in a range that satisfy some condition.
-
-## Range Queries
+For example, in a segment tree for an array of integers
+* each leaf node would represent a single element of the array, 
+* while the internal nodes would represent segments of the array. 
+* The value stored at each internal node would be the aggregate of its children's values, such as the sum or minimum of their values.
 
 
+## Structure
+A segment tree is a binary tree data structure that is used to represent intervals or segments of an array. The structure of a segment tree is as follows:
 
-Range queries are operations that involve querying a subset or a range of elements in a data structure. These queries are common in a variety of applications, such as data analysis, machine learning, and database management. Here are five examples of range queries:
+1. Each node in the tree represents a segment or interval of the input array. The root node represents the entire array, while the leaf nodes represent individual elements of the array.
+2. Each internal node in the tree has two children, which correspond to the left and right halves of its interval. For example, if a node represents the interval [i, j], its left child represents the interval [i, (i+j)/2] and its right child represents the interval [(i+j)/2+1, j].
+3. The values stored at each node of the tree are determined by aggregating the values of its children. This aggregation operation can be any associative function, such as sum, maximum, minimum, or bitwise AND.
+4. The tree is constructed recursively, by dividing the input array into smaller sub-arrays and building the corresponding segments of the tree.
+5. The size of the segment tree is typically 4n, where n is the size of the input array, since each node in the tree corresponds to a segment of at most length n.
 
-1. **Sum of elements in a range**: Given an array of integers and a range [L, R], find the sum of all integers in the range [L, R]. This type of query is common in many applications, such as computing the total revenue of a company over a specific period of time.
-
-2. **Minimum/maximum element in a range**: Given an array of integers and a range [L, R], find the minimum or maximum integer in the range [L, R]. This type of query is useful in many applications, such as finding the highest or lowest temperature over a period of time.
-
-3. **Count of elements in a range that satisfy a condition**: Given an array of integers and a range [L, R], count the number of integers in the range that satisfy a specific condition. For example, you may want to count the number of elements in a range that are greater than a certain threshold.
-
-4. **Substring search**: Given a string and a range [L, R], find all occurrences of a substring within the range [L, R]. This type of query is common in text processing and data mining applications.
-
-5. **Range update**: Given an array of integers and a range [L, R], update all elements in the range [L, R] by a specific amount. This type of query is useful in many applications, such as adjusting the prices of products in a specific category by a fixed amount.
-
-## Data Structure
-A segment tree is a binary tree where each leaf node represents an element of an input array, and each internal node represents a segment of the array. The root of the tree represents the entire array, and each internal node is recursively partitioned into two segments until the leaf nodes are reached. The segment represented by an internal node is typically the union of the segments represented by its two child nodes.
-
-Each internal node of the segment tree stores some information computed from the information stored in its child nodes. The information stored in an internal node can be used to answer queries on the segment of the array represented by that node. Common types of information stored in each node include the minimum or maximum value in the segment, the sum of the elements in the segment, or the number of elements in the segment that satisfy a certain condition.
-
-The segment tree can be constructed recursively in a top-down manner, by starting with the root node and dividing the input array into two halves, and recursively constructing the left and right child nodes. The base case of the recursion is when the segment represented by a node contains only one element, which is stored in the corresponding leaf node.
-
-Once the segment tree is constructed, it can be used to answer range queries efficiently. For example, to compute the sum of the elements in a range [L, R], we start at the root of the tree and recursively descend the tree, querying each node to determine if its segment overlaps the query range [L, R]. If it does, we add the information stored in that node to the result and continue recursively descending to its child nodes until we reach the leaf nodes.
-
-To update an element in the input array, we start at the root of the tree and recursively descend the tree to find the leaf node corresponding to the element to be updated. We update the value in that leaf node and then propagate the update information up the tree to update the values in the parent nodes, until we reach the root of the tree.
+The structure of a segment tree allows for efficient querying and updating of intervals in the input array, 
+by traversing the tree and aggregating the values of its nodes. The logarithmic depth of the tree ensures 
+that the time complexity of these operations is O(log n), where n is the size of the input array.
 
 ## Basic Operations
 
-The basic operations on a segment tree are:
+A segment tree supports several basic operations that can be performed efficiently in logarithmic time. Here are the most commonly used operations:
 
-1. **Construction**: The segment tree is constructed from the input array in a top-down manner using recursion. The construction process involves dividing the input array into smaller segments, constructing the segment tree for each segment, and computing the information for each internal node based on the information stored in its child nodes.
+1. `Build`: This operation constructs the segment tree for a given input array. It is performed recursively by dividing the input array into smaller subarrays and building the corresponding segments of the tree.
+2. `Query`: This operation computes an aggregate value (such as minimum, maximum, sum, or average) over a given interval or range of the input array. It is performed by traversing the tree and aggregating the values of its nodes that overlap with the given range.
+3. `Update`: This operation modifies the value of a single element in the input array and updates the corresponding node in the segment tree. It is performed by traversing the tree from the root to the leaf node that represents the target element, and then updating the node and its ancestors as necessary to maintain the correct aggregation values.
+4. `Lazy propagation`: This is an optimization technique that allows for efficient updates of a large range of elements in the input array. Instead of updating all the affected nodes immediately, lazy propagation defers the updates until they are actually needed. This can greatly reduce the number of updates performed and improve the performance of the segment tree.
+5. `Range modification`: This operation modifies the values of all elements in a given interval or range of the input array, and updates the corresponding nodes in the segment tree. It is similar to the update operation, but it affects multiple nodes in the tree instead of just one.
+6. `Range queries with condition`: This operation computes an aggregate value over a given interval or range of the input array that satisfies a certain condition. For example, it can compute the minimum value over a range that is greater than a certain threshold. This operation can be implemented using a modified version of the query operation that checks the condition at each node of the tree before aggregating its values.
 
-2. **Query**: Given a query range [L, R], the segment tree can be used to compute some information about the elements in that range. The query operation starts at the root of the tree and recursively descends the tree, querying each node to determine if its segment overlaps the query range [L, R]. If it does, the operation adds the information stored in that node to the result and continues recursively descending to its child nodes until it reaches the leaf nodes.
+### Examples
 
-3. **Update**: Given an index i and a new value v, the segment tree can be updated to reflect the change in the input array. The update operation starts at the root of the tree and recursively descends the tree to find the leaf node corresponding to the element to be updated. The value in that leaf node is updated to v, and then the operation propagates the update information up the tree to update the values in the parent nodes until it reaches the root of the tree.
 
-4. **Lazy Propagation**: In some cases, updating a single element in the input array may require updating a large number of nodes in the segment tree. Lazy propagation is a technique used to delay the updates to the parent nodes until they are actually needed. When an update operation is performed on a node, instead of updating its parent node immediately, the operation stores the update information in the node and sets a flag to indicate that the node has pending updates. When a query operation encounters a node with pending updates, it applies the updates and propagates them to the child nodes before continuing with the query.
+#### Example 1: 
 
-These basic operations form the building blocks for many advanced algorithms and data structures that use segment trees, such as range queries and updates, interval trees, and Fenwick trees.
-
-Here's an example implementation of a segment tree in Go:
-
-```go
-package main
-
-import "fmt"
-
-type SegmentTree struct {
-    tree   []int
-    n      int
-    update []int
-}
-
-func NewSegmentTree(arr []int) *SegmentTree {
-    n := len(arr)
-    tree := make([]int, 4*n)
-    update := make([]int, 4*n)
-    return &SegmentTree{tree, n, update}
-}
-
-func (st *SegmentTree) build(node, start, end int, arr []int) {
-    if start == end {
-        st.tree[node] = arr[start]
-    } else {
-        mid := (start + end) / 2
-        st.build(2*node, start, mid, arr)
-        st.build(2*node+1, mid+1, end, arr)
-        st.tree[node] = st.tree[2*node] + st.tree[2*node+1]
-    }
-}
-
-func (st *SegmentTree) query(node, start, end, l, r int) int {
-    if r < start || end < l {
-        return 0
-    }
-    if l <= start && end <= r {
-        return st.tree[node]
-    }
-    st.push(node, start, end)
-    mid := (start + end) / 2
-    left := st.query(2*node, start, mid, l, r)
-    right := st.query(2*node+1, mid+1, end, l, r)
-    return left + right
-}
-
-func (st *SegmentTree) update(node, start, end, idx, val int) {
-    if start == end {
-        st.tree[node] += val
-    } else {
-        mid := (start + end) / 2
-        if start <= idx && idx <= mid {
-            st.update(2*node, start, mid, idx, val)
-        } else {
-            st.update(2*node+1, mid+1, end, idx, val)
-        }
-        st.tree[node] = st.tree[2*node] + st.tree[2*node+1]
-    }
-}
-
-func (st *SegmentTree) updateRange(node, start, end, l, r, val int) {
-    if r < start || end < l {
-        return
-    }
-    if l <= start && end <= r {
-        st.tree[node] += (end - start + 1) * val
-        st.update[node] += val
-    } else {
-        st.push(node, start, end)
-        mid := (start + end) / 2
-        st.updateRange(2*node, start, mid, l, r, val)
-        st.updateRange(2*node+1, mid+1, end, l, r, val)
-        st.tree[node] = st.tree[2*node] + st.tree[2*node+1]
-    }
-}
-
-func (st *SegmentTree) push(node, start, end int) {
-    if st.update[node] != 0 {
-        mid := (start + end) / 2
-        st.update[2*node] += st.update[node]
-        st.update[2*node+1] += st.update[node]
-        st.tree[2*node] += (mid - start + 1) * st.update[node]
-        st.tree[2*node+1] += (end - mid) * st.update[node]
-        st.update[node] = 0
-    }
-}
-
-func main() {
-    arr := []int{1, 3, 5, 7,     9, 11}
-    st := NewSegmentTree(arr)
-    st.build(1, 0, st.n-1, arr)
-    fmt.Println(st.query(1, 0, st.n-1, 1, 3))
-    st.update(1, 0, st.n-1, 2, 2)
-    fmt.Println(st.query(1, 0, st.n-1, 1, 3))
-    st.updateRange(1, 0, st.n-1, 0, 5, 2)
-    fmt.Println(st.query(1, 0, st.n-1, 1, 3))
-}
-```
-
-API:
-- `NewSegmentTree(arr []int) *SegmentTree`: creates a new instance of SegmentTree struct with the provided integer array `arr`.
-- `build(node, start, end int, arr []int)`: builds the segment tree from the given array `arr`.
-- `query(node, start, end, l, r int) int`: returns the sum of elements in the range `[l, r]`.
-- `update(node, start, end, idx, val int)`: updates the value of the element at index `idx` to `val`.
-- `updateRange(node, start, end, l, r, val int)`: adds `val` to all elements in the range `[l, r]`.
-- `push(node, start, end int)`: applies the pending updates to the node and its children.
-
-A segment tree is a binary tree where each node represents a range of indices in an array. The root of the tree represents the entire array, and each leaf node represents a single element in the array. The tree is constructed in a way that allows for efficient range queries and updates.
-
-Here is an example of a segment tree for an array of size 8:
+Input array:
 
 ```
-            [0, 7]
-           /      \
-        [0, 3]    [4, 7]
-        /    \     /    \
-     [0,1] [2,3] [4,5] [6,7]
-     / \   / \   / \   /  \
-   [0] [1][2][3][4][5][6] [7]
+ 0  1  2  3
+[1, 3, 2, 4]
 ```
 
-Each node of the segment tree represents a range of indices in the array. For example, the root node represents the range `[0, 7]`, the left child of the root node represents the range `[0, 3]`, and so on. The leaf nodes represent single elements of the array, and the values stored at each node represent the result of some operation (e.g., sum, minimum, maximum) over the range of indices represented by that node.
 
-In general, the height of a segment tree is `log(n)`, where `n` is the size of the array. This means that the number of nodes in the tree is `O(n)` and the space complexity of a segment tree is also `O(n)`.
+```
+graph TD
+  A["[0,3] 10"]
+  B["[0,1] 4"]
+  C["[2,3] 6"]
+  D["[0,0] 1"]
+  E["[1,1] 3"]
+  F["[2,2] 2"]
+  G["[3,3] 4"]
+  A-->B
+  A-->C
+  B-->D
+  B-->E
+  C-->F
+  C-->G
+```
+
+Explanation: 
+* This segment tree represents the input array [1, 3, 2, 4] with 0-based indexing. 
+* The root node (A) represents the interval [0,3], which is the entire array. 
+* Its left child (B) represents the interval [0,1], and its right child (C) represents the interval [2,3]. 
+* The leaf nodes contain the array elements themselves. 
+* The value next to each node represents the aggregate value of the interval that it represents. E.g: the root node A represents the sum of all elements in the array, which is 10.
+
+#### Example 2: 
+Input array:
+
+```
+ 0  1  2  3  4   5  6
+[7, 5, 3, 9, 11, 6, 2]
+```
 
 
+```
+graph TD
+  A["[0,6] 43"]
+  B["[0,3] 24"]
+  C["[4,6] 19"]
+  D["[0,1] 12"]
+  E["[2,3] 12"]
+  F["[4,5] 17"]
+  G["[6,6] 2"]
+  H["[0,0] 7"]
+  I["[1,1] 5"]
+  J["[2,2] 3"]
+  K["[3,3] 9"]
+  L["[4,4] 11"]
+  M["[5,5] 6"]
+  N["[6,6] 2"]
+  A-->B
+  A-->C
+  B-->D
+  B-->E
+  C-->F
+  C-->G
+  D-->H
+  D-->I
+  E-->J
+  E-->K
+  F-->L
+  F-->M
+  G-->N
+```
+
+Explanation: 
+* This segment tree represents the input array [7, 5, 3, 9, 11, 6, 2] with 0-based indexing. 
+* The root node (A) represents the interval [0,6], which is the entire array. 
+* Its left child (B) represents the interval [0,3], 
+* and its right child (C) represents the interval [4,6]. 
+* The leaf nodes contain the array elements themselves. For example, the node H represents the element at index 0, which is 7. 
+* The value next to each node represents the aggregate value of the interval that it represents. For example, the root node A represents the sum of all elements in the array, which is 43.
+
+
+## Examples:
 
 Here are 20 examples of problems that can be solved using segment trees:
 
