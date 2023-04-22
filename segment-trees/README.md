@@ -153,9 +153,6 @@ Explanation:
 
 ```go
 type SegmentTree interface {
-    // Build the segment tree from an input array.
-    Build(arr []int)
-
     // Update the value at a given index.
     Update(idx int, val int)
 
