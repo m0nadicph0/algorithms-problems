@@ -149,6 +149,24 @@ Explanation:
 * The leaf nodes contain the array elements themselves. For example, the node H represents the element at index 0, which is 7. 
 * The value next to each node represents the aggregate value of the interval that it represents. For example, the root node A represents the sum of all elements in the array, which is 43.
 
+## API
+
+```go
+type SegmentTree interface {
+    // Build the segment tree from an input array.
+    Build(arr []int)
+
+    // Update the value at a given index.
+    Update(idx int, val int)
+
+    // Query the minimum/maximum/sum value in the given range.
+    Query(left int, right int) int
+}
+```
+
+
+----
+
 
 ## Examples:
 
