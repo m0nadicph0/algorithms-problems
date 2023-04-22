@@ -155,46 +155,28 @@ Explanation:
 Here are 20 examples of problems that can be solved using segment trees:
 
 1. Range sum query: Given an array of integers, and a range [L, R], find the sum of all the integers in the range [L, R].
-
 2. Range minimum query: Given an array of integers, and a range [L, R], find the minimum value in the range [L, R].
-
 3. Range maximum query: Given an array of integers, and a range [L, R], find the maximum value in the range [L, R].
-
 4. Range product query: Given an array of integers, and a range [L, R], find the product of all the integers in the range [L, R].
-
 5. Range gcd query: Given an array of integers, and a range [L, R], find the greatest common divisor (GCD) of all the integers in the range [L, R].
-
 6. Range lcm query: Given an array of integers, and a range [L, R], find the least common multiple (LCM) of all the integers in the range [L, R].
-
 7. Range update query: Given an array of integers, and a range [L, R], add a value to all the integers in the range [L, R].
-
 8. Range set query: Given an array of integers, and a range [L, R], set all the integers in the range [L, R] to a given value.
-
 9. Range count query: Given an array of integers, and a range [L, R], count the number of integers in the range [L, R] that are equal to a given value.
-
 10. Range mode query: Given an array of integers, and a range [L, R], find the mode (most frequent element) in the range [L, R].
-
 11. Range median query: Given an array of integers, and a range [L, R], find the median (middle element) in the range [L, R].
-
 12. Range kth query: Given an array of integers, and a range [L, R], find the kth smallest/largest element in the range [L, R].
-
 13. Range reverse query: Given an array of integers, and a range [L, R], reverse the order of all the integers in the range [L, R].
-
 14. Range binary search query: Given an array of integers sorted in ascending order, and a range [L, R], find the index of the first/last element in the range [L, R] that is greater than or equal to a given value.
-
 15. Range update with lazy propagation: Given an array of integers, and a range [L, R], add a value to all the integers in the range [L, R] efficiently using lazy propagation.
-
 16. Range gcd with lazy propagation: Given an array of integers, and a range [L, R], find the greatest common divisor (GCD) of all the integers in the range [L, R] efficiently using lazy propagation.
-
 17. Range minimum with lazy propagation: Given an array of integers, and a range [L, R], find the minimum value in the range [L, R] efficiently using lazy propagation.
-
 18. Range maximum with lazy propagation: Given an array of integers, and a range [L, R], find the maximum value in the range [L, R] efficiently using lazy propagation.
-
 19. Range sum with lazy propagation: Given an array of integers, and a range [L, R], find the sum of all the integers in the range [L, R] efficiently using lazy propagation.
-
 20. Range set with lazy propagation: Given an array of integers, and a range
 
-Here are 20 problems from LeetCode that involve segment trees:
+
+## LeetCode Problems:
 
 1. Range Sum Query - Mutable: Implement a data structure that supports range sum queries and range updates efficiently.
 
