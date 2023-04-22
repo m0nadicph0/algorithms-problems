@@ -179,41 +179,70 @@ Here are 20 examples of problems that can be solved using segment trees:
 ## LeetCode Problems:
 
 1. Range Sum Query - Mutable: Implement a data structure that supports range sum queries and range updates efficiently.
-
 2. Count of Smaller Numbers After Self: Given an integer array, for each element, count the number of elements to its right that are smaller than it.
-
 3. Range Sum Query 2D - Mutable: Implement a data structure that supports 2D range sum queries and range updates efficiently.
-
 4. Maximum Sum of Subarray Close to K: Given an integer array and a target value K, find the maximum sum of a subarray such that the sum is closest to K.
-
 5. Number of Inversions in an Array: Given an integer array, count the number of inversions (i.e., pairs of elements that are out of order).
-
 6. Longest Repeating Character Replacement: Given a string and an integer k, find the length of the longest substring that can be obtained by replacing at most k characters.
-
 7. Minimum Number of Arrows to Burst Balloons: Given a list of balloons, find the minimum number of arrows needed to burst all the balloons.
-
 8. Largest Rectangle in Histogram: Given an array representing the heights of a histogram, find the area of the largest rectangle that can be formed.
-
 9. Kth Smallest Element in a Sorted Matrix: Given a matrix of integers that is sorted both row-wise and column-wise, find the kth smallest element in the matrix.
-
 10. The Skyline Problem: Given a list of buildings, find the skyline of the city.
-
 11. Count of Range Sum: Given an integer array, count the number of range sums that fall within a given range.
-
 12. Sliding Window Median: Given an integer array and a window size k, find the median of each window of size k that slides from left to right.
-
 13. Range Module: Implement a data structure that supports adding, removing, and querying ranges of integers.
-
 14. Count of Smaller Numbers Before Self: Given an integer array, for each element, count the number of elements to its left that are smaller than it.
-
 15. Rectangle Area II: Given a list of rectangles, find the total area covered by the rectangles.
-
 16. Maximal Rectangle: Given a matrix of 0's and 1's, find the area of the largest rectangle that can be formed by 1's.
-
 17. The Number of Weak Characters in the Game: Given a list of game characters, a character is considered weak if it has strictly smaller attack and defense than another character.
-
 18. Smallest Common Region: Given a list of regions and a pair of regions, find the smallest region that contains both regions.
-
 19. Shortest Distance to Target Color: Given an integer array and a list of color values, for each index in the array, find the shortest distance to the nearest index that has the target color.
-
 20. The Skyline Problem II: Given a list of buildings, find the silhouette of the city.
+
+## More problems
+
+1.  Maximum Subarray Sum (UVa Online Judge Problem 10684)
+2.  Range Minimum Query (SPOJ Problem RMQSQ)
+3.  KQUERY - K-query (SPOJ)
+4.  GSS1 - Can you answer these queries I (SPOJ)
+5.  Kth Number (SPOJ Problem KQUERYO)
+6.  Counting Haybales (USACO 2015 December Contest, Silver)
+7.  Count on a tree II (UVA Online Judge Problem 11838)
+8.  Swap and Flip (Codeforces Problem 1007E)
+9.  Lily's Homework (Codeforces Problem 670C1)
+10. Exam Cheating (Codeforces Problem 1133E)
+11. Orac and LCM (Codeforces Problem 1350F)
+12. Boboniu and String (Codeforces Problem 1395D)
+13. Multiplication Table (Codeforces Problem 222E)
+14. Segment Tree (SPOJ Problem KGSS)
+15. Matrix (Codeforces Problem 361E)
+16. Pashmak and Parmida's problem (Codeforces Problem 459D)
+17. Balanced Cow Subsets (USACO 2020 December Contest, Silver)
+18. The Lazy Cow (USACO 2016 January Contest, Silver)
+19. Maximum Subarray Sum II (CSES Problem Set)
+20. Yet Another Minimization Problem (Codeforces Problem 1114E)
+
+## Some more problems
+1.  Distance in Tree (Codeforces Problem 161D)
+2.  Longest Regular Bracket Sequence (Codeforces Problem 5D)
+3.  GSS5 - Can you answer these queries V (SPOJ)
+4.  Count on a tree III (UVA Online Judge Problem 12532)
+5.  Sereja and Brackets (Codeforces Problem 380C)
+6.  Circular RMQ (Codeforces Problem 52E)
+7.  Beautiful Matrix Queries (Codeforces Problem 274E)
+8.  Ants on a Circle (Codeforces Problem 190C)
+9.  Number Of Balanced Subtrees (Codeforces Problem 1237E)
+10. Order Statistics Tree (Codeforces Problem 251D)
+11. Almost All (Codeforces Problem 1101E)
+12. Border (Codeforces Problem 1011E)
+13. The Two Routes (Codeforces Problem 601E)
+14. Little Girl and Maximum XOR (Codeforces Problem 276E)
+15. Count on a tree IV (UVA Online Judge Problem 12768)
+16. KQUERYO - K-query Online (SPOJ)
+17. Urbanization (Codeforces Problem 735D)
+18. Minimum Edit Distance on a Tree (Codeforces Problem 248D)
+19. Parquet (Codeforces Problem 430D)
+20. Forest Queries II (CSES Problem Set)
+
+
+
