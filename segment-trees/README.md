@@ -157,7 +157,7 @@ type SegmentTree interface {
     Update(idx int, val int)
 
     // Query the minimum/maximum/sum value in the given range.
-    Query(left int, right int) int
+    Query(start int, end int) int
 }
 ```
 
