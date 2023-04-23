@@ -41,8 +41,30 @@ func buildTreeHelper(arr []int, start int, end int) *SegmentTreeNode {
 }
 
 func (b *BinaryTreeSegmentTree) Update(index int, value int) {
-	//TODO implement me
-	panic("implement me")
+	updateHelper(b.root, index, value)
+}
+
+func updateHelper(node *SegmentTreeNode, index int, value int) {
+	if node == nil {
+		return
+	}
+
+	if node.start == index && node.end == index {
+		node.value = value
+		return
+	}
+
+	mid := (node.start + node.end) / 2
+
+	if index <= mid {
+		updateHelper(node.left, index, value)
+	} else {
+		updateHelper(node.right, index, value)
+	}
+
+	if node.left != nil && node.right != nil {
+		node.value = node.left.value + node.right.value
+	}
 }
 
 func (b *BinaryTreeSegmentTree) Query(start int, end int) int {
