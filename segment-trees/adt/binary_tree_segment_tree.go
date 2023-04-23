@@ -46,8 +46,19 @@ func (b *BinaryTreeSegmentTree) Update(index int, value int) {
 }
 
 func (b *BinaryTreeSegmentTree) Query(start int, end int) int {
-	//TODO implement me
-	panic("implement me")
+	return queryHelper(b.root, start, end)
+}
+
+func queryHelper(node *SegmentTreeNode, start int, end int) int {
+	if start <= node.start && end >= node.end {
+		return node.value
+	}
+
+	if start > node.end || end < node.start {
+		return 0
+	}
+
+	return queryHelper(node.left, start, end) + queryHelper(node.right, start, end)
 }
 
 func (b *BinaryTreeSegmentTree) Print() {
